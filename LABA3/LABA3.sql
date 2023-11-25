@@ -1,5 +1,6 @@
 ------------------------------------ Задание №1
 select * from dba_pdbs;
+select * from v$pdbs;
 
 ------------------------------------ Задание №2
 select * from v$instance;
