@@ -185,10 +185,7 @@ where TEACHER = 'ЖРСК';
 
 
 ------------------------------------ Задание №2
-select regexp_substr(teacher_name, '(\S+)', 1, 1) || ' ' ||
-       substr(regexp_substr(teacher_name, '(\S+)', 1, 2), 1, 1) || '. ' ||
-       substr(regexp_substr(teacher_name, '(\S+)', 1, 3), 1, 1) || '. ' as ФИО
-from teacher;
+select regexp_substr(teacher_name, '(\S+)', 1, 1) || ' ' || substr(regexp_substr(teacher_name, '(\S+)', 1, 2), 1, 1) || '. ' || substr(regexp_substr(teacher_name, '(\S+)', 1, 3), 1, 1) || '. ' as ФИО from teacher;
 
 ------------------------------------ Задание №3
 select * from teacher where TO_CHAR(birthday, 'd') = 2;
@@ -214,6 +211,7 @@ group by to_char(birthday, 'Month')
 having count(*) >= 1
 order by Количество desc;
 
+
 select * from number_months;
 
 ------------------------------------ Задание №6
@@ -227,7 +225,6 @@ DECLARE
 
   v_teacher  teacher%rowtype;
 BEGIN
-  -- Открываем курсор
   OPEN teacher_birthday_cur;
 
   -- Забираем данные из курсора
@@ -294,19 +291,21 @@ end;
 ------------------------------------ Задание №8
 declare
 type contacts is record( 
-email VARCHAR2(50),
-phone number(13));
+    email VARCHAR2(50),
+    phone number(13));
+    
 type person is record(
-name teacher.teacher_name%type,
-pulpit teacher.pulpit%type,
-contact contacts);
-per1 PERSON;
+    name teacher.teacher_name%type,
+    pulpit teacher.pulpit%type,
+    contact contacts);
+    per1 PERSON;
+    
 begin
-per1.name:= 'dszfsd';
-per1.pulpit:='FIT';
-per1.contact.email := 'podobedvladislavgeorg@gmail.com';
-per1.contact.phone := 123456789;
-dbms_output.put_line( per1.name||' '|| per1.pulpit||' '|| per1.contact.email||'  '|| per1.contact.phone);
+    per1.name:= 'Podobed';
+    per1.pulpit:='FIT';
+    per1.contact.email := 'podobedvladislavgeorg@gmail.com';
+    per1.contact.phone := 375298789804;
+    dbms_output.put_line( per1.name||' '|| per1.pulpit||' '|| per1.contact.email||'  '|| per1.contact.phone);
 end;
 
 
